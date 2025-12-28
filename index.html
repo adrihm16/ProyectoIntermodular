@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Synapse - Inicio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+    }
+  </style>
+</head>
+
+<body>
+  <header class="sticky top-0 z-50 bg-gradient-to-r from-[#004689] to-[#002F5C] text-white shadow-md">
+    <div class="flex items-center justify-between px-6 py-4 gap-4">
+      <div class="font-extrabold text-2xl tracking-wide flex items-center gap-2">
+        <span class="text-white">
+          <svg class="w-10 h-10">
+            <use xlink:href="./assets/sprite.svg#icon-main" />
+          </svg>
+        </span>
+        SYNAPSE
+      </div>
+      <div class="hidden md:flex flex-1 max-w-2xl mx-auto px-6">
+        <div class="w-full flex">
+          <input type="text" placeholder="Buscar..."
+            class="w-full py-2 px-4 rounded-l-full text-gray-900 focus:outline-none" />
+          <button class="bg-white px-4 rounded-r-full">
+            <svg class="w-6 h-6">
+              <use href="./assets/sprite.svg#search-filled">
+            </svg>
+          </button>
+        </div>
+      </div>
+      <div class="flex items-center gap-6 text-xl">
+        <button class="hover:text-gray-200 transition">
+          <svg class="w-10 h-10">
+            <use xlink:href="./assets/sprite.svg#icon-user" />
+          </svg>
+        </button>
+        <button class="relative hover:text-gray-200 transition">
+          <svg class="w-10 h-10">
+            <use xlink:href="./assets/sprite.svg#icon-cart" />
+          </svg>
+          <span class="absolute -top-2 -right-2 bg-red-500 text-[15px] font-bold px-2 rounded-full">2</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="w-full bg-slate-900">
+    <a href="producto.html" class="block group relative overflow-hidden">
+
+      <img src="assets/HeroOnePlus15Mobile.png" alt="OnePlus 15"
+        class="w-full h-auto object-cover md:hidden transition-all duration-700 group-hover:scale-105 group-hover:brightness-110">
+
+      <img src="assets/HeroOnePlus15.png" alt="OnePlus 15"
+        class="hidden w-full h-auto object-cover md:block transition-all duration-700 group-hover:scale-[1.01] group-hover:brightness-110">
+
+    </a>
+  </section>
+
+  <!-- Productos Destacados -->
+
+  <section class="max-w-[95%] mx-auto px-6 py-16">
+
+    <div class="mb-12 text-center">
+      <h2 class="text-3xl md:text-4xl font-extralight color-[#000000] mt-3 tracking-tight">Productos Destacados </h2>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-10">
+      <a href="producto.html"
+        class="group bg-white rounded-[2.5rem] p-8 shadow-md shadow-black/20 hover:shadow-lg hover:shadow-black/40 hover:-translate-y-2 transition-all duration-500 flex flex-col">
+        <div class="h-64 w-full flex items-center justify-center mb-4 relative">
+          <img src="assets/Oneplus15.png" class="h-60 object-contain group-hover:scale-110 transition duration-500">
+        </div>
+        <div class="mt-auto text-center">
+          <h3 class="text-2xl font-semibold text-[#000000] mb-2 group-hover:text-[#000000] transition tracking-tight">
+            OnePlus 15</h3>
+          <div class="text-3xl font-normal text-[#000000] tracking-tight">1.029 €</div>
+        </div>
+      </a>
+      <a href="producto.html"
+        class="group bg-white rounded-[2.5rem] p-8 shadow-md shadow-black/20 hover:shadow-lg hover:shadow-black/40 hover:-translate-y-2 transition-all duration-500 flex flex-col">
+        <div class="h-64 w-full flex items-center justify-center mb-4 relative">
+          <img src="assets/iPhone17ProMax.png"
+            class="h-60 object-contain group-hover:scale-110 transition duration-500">
+        </div>
+        <div class="mt-auto text-center">
+          <h3 class="text-2xl font-semibold text-[#000000] mb-2 group-hover:text-[#000000] transition tracking-tight">
+            Iphone 17 Pro Max</h3>
+          <div class="text-3xl font-normal text-[#000000] tracking-tight">1.700 €</div>
+        </div>
+      </a>
+      <a href="producto.html"
+        class="group bg-white rounded-[2.5rem] p-8 shadow-md shadow-black/20 hover:shadow-lg hover:shadow-black/40 hover:-translate-y-2 transition-all duration-500 flex flex-col">
+        <div class="h-64 w-full flex items-center justify-center mb-4 relative">
+          <img src="assets/iphone17AirBlue.png"
+            class="h-60 object-contain group-hover:scale-110 transition duration-500">
+        </div>
+        <div class="mt-auto text-center">
+          <h3 class="text-2xl font-semibold text-[#000000] mb-2 group-hover:text-[#000000] transition tracking-tight">
+            Iphone 17 Air</h3>
+          <div class="text-3xl font-normal text-[#000000] tracking-tight">1.050 €</div>
+        </div>
+      </a>
+      <a href="producto.html"
+        class="group bg-white rounded-[2.5rem] p-8 shadow-md shadow-black/20 hover:shadow-lg hover:shadow-black/40 hover:-translate-y-2 transition-all duration-500 flex flex-col">
+        <div class="h-64 w-full flex items-center justify-center mb-4 relative">
+          <img src="assets/oppoFindX9Pro.png" class="h-60 object-contain group-hover:scale-110 transition duration-500">
+        </div>
+        <div class="mt-auto text-center">
+          <h3 class="text-2xl font-semibold text-[#000000] mb-2 group-hover:text-[#000000] transition tracking-tight">
+            Oppo Find X9 Pro</h3>
+          <div class="text-3xl font-normal text-[#000000] tracking-tight">1.299 €</div>
+        </div>
+      </a>
+    </div>
+    <div class="flex justify-center mt-8">
+      <a href="#"
+        class="group inline-flex items-center gap-2 bg-[#004689] text-white font-bold px-6 py-3 rounded-full hover:opacity-90 transition text-lg">
+        Ver todo
+      </a>
+    </div>
+
+  </section>
+  <footer>
+    <div class="footer-grid">
+      <div class="footer-col">
+        <h4>Sobre Nosotros</h4>
+        <ul>
+          <li>Acerca de Synapse</li>
+          <li>Atención al Cliente</li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Ayuda</h4>
+        <ul>
+          <li>Envíos</li>
+          <li>Devoluciones</li>
+        </ul>
+      </div>
+    </div>
+  </footer>
+</body>
+
+</html>

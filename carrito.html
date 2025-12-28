@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carrito - Synapse</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body>
+    <header>
+        <div>💠 SYNAPSE</div>
+    </header>
+
+    <div class="cart-wrapper">
+        <div class="cart-list">
+            <h1>Tu Carrito</h1>
+            <div class="cart-items">
+                <div class="cart-row">
+                    <img src="https://via.placeholder.com/100?text=1+" class="row-img">
+                    <div class="row-info">
+                        <h3>OnePlus 15</h3>
+                        <p>Color: Infinite Black | 512GB</p>
+                    </div>
+                    <div class="row-controls">
+                        <button class="qty-btn">-</button>
+                        <span class="qty-val">1</span>
+                        <button class="qty-btn">+</button>
+                    </div>
+                    <div class="row-price">1029,00€</div>
+                </div>
+
+                <div class="cart-row">
+                    <img src="https://via.placeholder.com/100?text=DJI" class="row-img">
+                    <div class="row-info">
+                        <h3>DJI Mobile 7</h3>
+                        <p>Regalo promocional</p>
+                    </div>
+                    <div class="row-controls">
+                        <span class="qty-val">1</span>
+                    </div>
+                    <div class="row-price">GRATIS</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="order-summary">
+            <div class="summary-title">Resumen</div>
+            
+            <div class="summary-row">
+                <span>Subtotal (2 artículos)</span>
+                <span>1029,00€</span>
+            </div>
+            <div class="summary-row">
+                <span>Envío</span>
+                <span>Gratis</span>
+            </div>
+
+            <div class="summary-divider"></div>
+
+            <div class="total-row">
+                <span>Total</span>
+                <span>1029,00€</span>
+            </div>
+
+            <button class="btn-checkout">Ir a Pagar</button>
+        </div>
+    </div>
+</body>
+</html>

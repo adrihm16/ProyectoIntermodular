@@ -1,70 +1,361 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Carrito - Synapse</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
     <script src="https://cdn.tailwindcss.com"></script>
+
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+        }
+    </style>
 </head>
-<body>
-    <header>
-        <div>💠 SYNAPSE</div>
-    </header>
 
-    <div class="cart-wrapper">
-        <div class="cart-list">
-            <h1>Tu Carrito</h1>
-            <div class="cart-items">
-                <div class="cart-row">
-                    <img src="https://via.placeholder.com/100?text=1+" class="row-img">
-                    <div class="row-info">
-                        <h3>OnePlus 15</h3>
-                        <p>Color: Infinite Black | 512GB</p>
-                    </div>
-                    <div class="row-controls">
-                        <button class="qty-btn">-</button>
-                        <span class="qty-val">1</span>
-                        <button class="qty-btn">+</button>
-                    </div>
-                    <div class="row-price">1029,00€</div>
-                </div>
+<body class="bg-gray-50 text-slate-900 flex flex-col min-h-screen">
 
-                <div class="cart-row">
-                    <img src="https://via.placeholder.com/100?text=DJI" class="row-img">
-                    <div class="row-info">
-                        <h3>DJI Mobile 7</h3>
-                        <p>Regalo promocional</p>
-                    </div>
-                    <div class="row-controls">
-                        <span class="qty-val">1</span>
-                    </div>
-                    <div class="row-price">GRATIS</div>
+    <div id="top-bar"
+        class="fixed top-0 left-0 w-full z-50 bg-gradient-to-r from-[#004689] to-[#002F5C] text-white shadow-md h-[72px]">
+        <div class="flex items-center justify-between px-6 py-4 gap-4 h-full">
+            <a href="index.html" class="font-extrabold text-2xl tracking-wide flex items-center gap-2">
+                <span class="text-white">
+                    <svg class="w-10 h-10">
+                        <use xlink:href="./assets/sprite.svg#icon-main" />
+                    </svg>
+                </span>
+                SYNAPSE
+            </a>
+
+            <div class="hidden md:flex flex-1 max-w-2xl mx-auto px-6">
+                <div class="w-full flex">
+                    <input type="text" placeholder="Buscar..."
+                        class="w-full py-2 px-4 rounded-l-full text-gray-900 focus:outline-none" />
+                    <button class="bg-white px-4 rounded-r-full hover:bg-gray-100 transition">
+                        <svg class="w-6 h-6">
+                            <use href="./assets/sprite.svg#search-filled"></use>
+                        </svg>
+                    </button>
                 </div>
             </div>
-        </div>
 
-        <div class="order-summary">
-            <div class="summary-title">Resumen</div>
-            
-            <div class="summary-row">
-                <span>Subtotal (2 artículos)</span>
-                <span>1029,00€</span>
+            <div class="flex items-center gap-6 text-xl">
+                <button class="hover:text-gray-200 transition">
+                    <svg class="w-10 h-10">
+                        <use xlink:href="./assets/sprite.svg#icon-user" />
+                    </svg>
+                </button>
+                <button class="relative hover:text-gray-200 transition">
+                    <svg class="w-10 h-10">
+                        <use xlink:href="./assets/sprite.svg#icon-cart" />
+                    </svg>
+                    <span
+                        class="absolute -top-2 -right-2 bg-red-500 text-[15px] font-bold px-2 rounded-full border-2 border-[#002F5C]">2</span>
+                </button>
             </div>
-            <div class="summary-row">
-                <span>Envío</span>
-                <span>Gratis</span>
-            </div>
-
-            <div class="summary-divider"></div>
-
-            <div class="total-row">
-                <span>Total</span>
-                <span>1029,00€</span>
-            </div>
-
-            <button class="btn-checkout">Ir a Pagar</button>
         </div>
     </div>
+
+    <nav id="smart-nav"
+        class="fixed top-[72px] left-0 w-full z-40 bg-[#001a33] text-white py-3 px-6 border-t border-white/10 transition-transform duration-300 translate-y-0">
+        <div class="flex items-center justify-between">
+
+            <div class="flex items-center gap-3 cursor-pointer hover:text-blue-300 transition group">
+                <svg class="w-8 h-8 fill-current" viewBox="0 0 24 24">
+                    <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z" />
+                </svg>
+                <span class="font-bold text-lg tracking-wide uppercase">TODAS LAS CATEGORÍAS</span>
+            </div>
+
+            <div class="hidden lg:flex items-center gap-8 font-bold text-sm tracking-wider uppercase">
+                <a href="#" class="flex items-center gap-1 hover:text-blue-300 transition">
+                    BLACK FRIDAY
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M19 9l-7 7-7-7"></path>
+                    </svg>
+                </a>
+                <a href="#" class="flex items-center gap-1 hover:text-blue-300 transition">
+                    OUTLET HOGAR
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M19 9l-7 7-7-7"></path>
+                    </svg>
+                </a>
+                <a href="#" class="hover:text-blue-300 transition">
+                    BLOG
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="w-full h-[130px] bg-[#001a33]"></div>
+    <main class="flex-grow max-w-[95%] mx-auto px-4 md:px-8 py-10 w-full">
+
+        <div class="mb-12 text-center">
+            <h2 class="text-3xl md:text-4xl font-extralight color-[#000000] mt-3 tracking-tight">Tu Carrito
+            </h2>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+
+            <div
+                class="lg:col-span-9 bg-white rounded-[2.5rem] p-6 md:p-10 shadow-md border border-gray-100 min-h-[500px]">
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-6">
+
+                    <div class="flex flex-col items-center">
+                        <div
+                            class="bg-white border border-gray-200 rounded-[1.5rem] p-4 shadow-sm w-full aspect-square flex flex-col items-center justify-center relative group hover:shadow-md transition-shadow">
+                            <img src="assets/Oneplus15.png" alt="OnePlus 15" class="h-32 object-contain mb-3">
+                            <h3 class="text-lg font-medium text-slate-900 text-center leading-tight">OnePlus 15</h3>
+                            <p class="text-base font-bold text-gray-500 mt-1">1029,00€</p>
+                        </div>
+
+                        <div class="flex items-center gap-3 mt-4">
+                            <button class="text-gray-400 hover:text-[#003366] transition">
+                                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <circle cx="12" cy="12" r="10" stroke-width="1.5"></circle>
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M8 12h8">
+                                    </path>
+                                </svg>
+                            </button>
+                            <button class="text-gray-400 hover:text-[#003366] transition">
+                                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <circle cx="12" cy="12" r="10" stroke-width="1.5"></circle>
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                                        d="M12 8v8m-4-4h8"></path>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="flex flex-col items-center">
+                        <div
+                            class="bg-white border border-gray-200 rounded-[1.5rem] p-4 shadow-sm w-full aspect-square flex flex-col items-center justify-center relative group hover:shadow-md transition-shadow">
+                            <img src="https://via.placeholder.com/150?text=Gimbal" alt="DJI"
+                                class="h-32 object-contain mb-3">
+                            <h3 class="text-lg font-medium text-slate-900 text-center leading-tight">DJI Mobile 7</h3>
+                            <p class="text-base font-bold text-gray-500 mt-1">0,00€</p>
+                        </div>
+                        <div class="flex items-center gap-3 mt-4">
+                            <button class="text-gray-400 hover:text-[#003366] transition">
+                                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <circle cx="12" cy="12" r="10" stroke-width="1.5"></circle>
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M8 12h8">
+                                    </path>
+                                </svg>
+                            </button>
+                            <button class="text-gray-400 hover:text-[#003366] transition">
+                                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <circle cx="12" cy="12" r="10" stroke-width="1.5"></circle>
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                                        d="M12 8v8m-4-4h8"></path>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="flex flex-col items-center">
+                        <div
+                            class="bg-white border border-gray-200 rounded-[1.5rem] p-4 shadow-sm w-full aspect-square flex flex-col items-center justify-center relative group hover:shadow-md transition-shadow">
+                            <img src="https://via.placeholder.com/150?text=Funda" alt="Funda"
+                                class="h-32 object-contain mb-3">
+                            <h3 class="text-lg font-medium text-slate-900 text-center leading-tight">Funda Carbono</h3>
+                            <p class="text-base font-bold text-gray-500 mt-1">29,90€</p>
+                        </div>
+                        <div class="flex items-center gap-3 mt-4">
+                            <button class="text-gray-400 hover:text-[#003366] transition">
+                                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <circle cx="12" cy="12" r="10" stroke-width="1.5"></circle>
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M8 12h8">
+                                    </path>
+                                </svg>
+                            </button>
+                            <button class="text-gray-400 hover:text-[#003366] transition">
+                                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <circle cx="12" cy="12" r="10" stroke-width="1.5"></circle>
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                                        d="M12 8v8m-4-4h8"></path>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <div
+                class="lg:col-span-3 bg-white rounded-[2.5rem] p-6 shadow-md border border-gray-100 min-h-[500px] flex flex-col sticky top-[150px]">
+
+                <h2 class="text-2xl font-light text-center mb-8 text-slate-900">Resumen</h2>
+
+                <div class="space-y-4 mb-8 flex-grow">
+                    <div class="flex justify-between text-sm font-medium text-slate-700">
+                        <span>Subtotal</span>
+                        <span>1058,90€</span>
+                    </div>
+                    <div class="flex justify-between text-sm font-medium text-slate-700">
+                        <span>Envío</span>
+                        <span>0,00€</span>
+                    </div>
+                    <div class="border-t border-gray-100 my-4"></div>
+                </div>
+
+                <div class="mb-8">
+                    <div class="flex justify-between items-center">
+                        <span class="text-lg font-bold text-slate-900">Total</span>
+                        <span class="text-xl font-bold text-slate-900">1058,90€</span>
+                    </div>
+                </div>
+
+                <button
+                    class="w-full bg-[#004689] text-white py-3.5 rounded-full font-medium text-base hover:bg-[#002F5C] transition shadow-lg hover:shadow-xl hover:-translate-y-1 transform duration-300">
+                    Ir a pagar
+                </button>
+
+                <div class="mt-6 flex justify-center gap-2 grayscale opacity-40">
+                    <div class="w-8 h-5 bg-gray-200 rounded"></div>
+                    <div class="w-8 h-5 bg-gray-200 rounded"></div>
+                    <div class="w-8 h-5 bg-gray-200 rounded"></div>
+                </div>
+            </div>
+
+        </div>
+    </main>
+    <section class="flex-grow max-w-[95%] mx-auto px-4 md:px-8 py-10 w-full">
+        <div class="mb-12 text-center">
+            <h2 class="text-3xl md:text-4xl font-extralight color-[#000000] mt-3 tracking-tight">Otros Productos
+            </h2>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-10">
+            <a href="producto.html"
+                class="group bg-white rounded-[2.5rem] p-8 shadow-md shadow-black/20 hover:shadow-lg hover:shadow-black/40 hover:-translate-y-2 transition-all duration-500 flex flex-col">
+                <div class="h-64 w-full flex items-center justify-center mb-4 relative">
+                    <img src="assets/Oneplus15.png"
+                        class="h-60 object-contain group-hover:scale-110 transition duration-500">
+                </div>
+                <div class="mt-auto text-center">
+                    <h3
+                        class="text-2xl font-semibold text-[#000000] mb-2 group-hover:text-[#000000] transition tracking-tight">
+                        OnePlus 15</h3>
+                    <div class="text-3xl font-normal text-[#000000] tracking-tight">1.029 €</div>
+                </div>
+            </a>
+            <a href="producto.html"
+                class="group bg-white rounded-[2.5rem] p-8 shadow-md shadow-black/20 hover:shadow-lg hover:shadow-black/40 hover:-translate-y-2 transition-all duration-500 flex flex-col">
+                <div class="h-64 w-full flex items-center justify-center mb-4 relative">
+                    <img src="assets/iPhone17ProMax.png"
+                        class="h-60 object-contain group-hover:scale-110 transition duration-500">
+                </div>
+                <div class="mt-auto text-center">
+                    <h3
+                        class="text-2xl font-semibold text-[#000000] mb-2 group-hover:text-[#000000] transition tracking-tight">
+                        Iphone 17 Pro Max</h3>
+                    <div class="text-3xl font-normal text-[#000000] tracking-tight">1.700 €</div>
+                </div>
+            </a>
+            <a href="producto.html"
+                class="group bg-white rounded-[2.5rem] p-8 shadow-md shadow-black/20 hover:shadow-lg hover:shadow-black/40 hover:-translate-y-2 transition-all duration-500 flex flex-col">
+                <div class="h-64 w-full flex items-center justify-center mb-4 relative">
+                    <img src="assets/iphone17AirBlue.png"
+                        class="h-60 object-contain group-hover:scale-110 transition duration-500">
+                </div>
+                <div class="mt-auto text-center">
+                    <h3
+                        class="text-2xl font-semibold text-[#000000] mb-2 group-hover:text-[#000000] transition tracking-tight">
+                        Iphone 17 Air</h3>
+                    <div class="text-3xl font-normal text-[#000000] tracking-tight">1.050 €</div>
+                </div>
+            </a>
+            <a href="producto.html"
+                class="group bg-white rounded-[2.5rem] p-8 shadow-md shadow-black/20 hover:shadow-lg hover:shadow-black/40 hover:-translate-y-2 transition-all duration-500 flex flex-col">
+                <div class="h-64 w-full flex items-center justify-center mb-4 relative">
+                    <img src="assets/oppoFindX9Pro.png"
+                        class="h-60 object-contain group-hover:scale-110 transition duration-500">
+                </div>
+                <div class="mt-auto text-center">
+                    <h3
+                        class="text-2xl font-semibold text-[#000000] mb-2 group-hover:text-[#000000] transition tracking-tight">
+                        Oppo Find X9 Pro</h3>
+                    <div class="text-3xl font-normal text-[#000000] tracking-tight">1.299 €</div>
+                </div>
+            </a>
+        </div>
+        <div class="flex justify-center mt-8">
+            <a href="#"
+                class="group inline-flex items-center gap-2 bg-[#004689] text-white font-medium px-10 py-3 rounded-full hover:opacity-90 transition text-lg">
+                Ver más
+            </a>
+        </div>
+    </section>
+
+    <footer class="bg-gradient-to-r from-[#004689] to-[#002F5C] text-white py-16 mt-auto">
+
+        <div class="max-w-[95%] mx-auto px-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8">
+
+            <div class="flex flex-col justify-start">
+                <a href="#"
+                    class="font-extrabold text-3xl flex items-center gap-3 tracking-wide hover:opacity-90 transition">
+                    <span class="text-4xl"> <svg class="w-12 h-12">
+                            <use xlink:href="./assets/sprite.svg#icon-main" />
+                        </svg></span>
+                    SYNAPSE
+                </a>
+            </div>
+
+            <div>
+                <h4 class="font-bold text-lg md:text-xl mb-6">Sobre nosotros</h4>
+                <ul class="space-y-4 text-sm md:text-base text-gray-200 font-light">
+                    <li><a href="#" class="hover:text-white hover:underline transition">Acerca de Synapse</a></li>
+                    <li><a href="#" class="hover:text-white hover:underline transition">Atención al cliente</a></li>
+                    <li><a href="#" class="hover:text-white hover:underline transition">Preguntas frecuentes</a></li>
+                </ul>
+            </div>
+
+            <div>
+                <h4 class="font-bold text-lg md:text-xl mb-6">Términos y condiciones</h4>
+                <ul class="space-y-4 text-sm md:text-base text-gray-200 font-light">
+                    <li><a href="#" class="hover:text-white hover:underline transition">Información</a></li>
+                    <li><a href="#" class="hover:text-white hover:underline transition">Política de privacidad</a></li>
+                </ul>
+            </div>
+
+            <div>
+                <h4 class="font-bold text-lg md:text-xl mb-6">Trabaja con nosotros</h4>
+                <ul class="space-y-4 text-sm md:text-base text-gray-200 font-light">
+                    <li><a href="#" class="hover:text-white hover:underline transition">Nuestros socios</a></li>
+                    <li><a href="#" class="hover:text-white hover:underline transition">Condiciones generales</a></li>
+                </ul>
+            </div>
+
+        </div>
+    </footer>
+    <script>
+        let lastScrollTop = 0;
+        const nav = document.getElementById('smart-nav');
+
+        window.addEventListener('scroll', function () {
+            let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+
+            if (scrollTop > lastScrollTop && scrollTop > 50) {
+                // BAJANDO: Esconder Nav
+                nav.style.transform = 'translateY(-100%)';
+            } else {
+                // SUBIENDO: Mostrar Nav
+                nav.style.transform = 'translateY(0)';
+            }
+
+            lastScrollTop = scrollTop;
+        });
+    </script>
+
 </body>
+
 </html>

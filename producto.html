@@ -7,6 +7,11 @@
     <title>OnePlus 15 - Synapse</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            font-family: "Poppins", sans-serif;
+        }
+    </style>
 </head>
 
 <body>
@@ -17,7 +22,7 @@
         <div id="top-bar"
             class="fixed top-0 left-0 w-full z-50 bg-gradient-to-r from-[#004689] to-[#002F5C] text-white shadow-md h-[72px]">
             <div class="flex items-center justify-between px-6 py-4 gap-4 h-full">
-                <a href="#index.html" class="font-extrabold text-2xl tracking-wide flex items-center gap-2">
+                <a href="index.html" class="font-extrabold text-2xl tracking-wide flex items-center gap-2">
                     <span class="text-white">
                         <svg class="w-10 h-10">
                             <use xlink:href="./assets/sprite.svg#icon-main" />
@@ -39,11 +44,77 @@
                 </div>
 
                 <div class="flex items-center gap-6 text-xl">
-                    <button class="hover:text-gray-200 transition">
-                        <svg class="w-10 h-10">
-                            <use xlink:href="./assets/sprite.svg#icon-user" />
-                        </svg>
-                    </button>
+                    <div class="relative">
+                        <button id="user-menu-btn" class="hover:text-gray-200 transition focus:outline-none">
+                            <svg class="w-10 h-10">
+                                <use xlink:href="./assets/sprite.svg#icon-user" />
+                            </svg>
+                        </button>
+                        <div id="login-card"
+                            class="absolute top-14 -right-10 w-80 bg-white/95 backdrop-blur-xl rounded-2xl shadow-2xl border border-white/20 p-8 transform origin-top-right transition-all duration-300 scale-95 opacity-0 pointer-events-none invisible z-[100] text-slate-800 font-sans">
+                            <div
+                                class="absolute -top-2 right-12 w-4 h-4 bg-white/95 rotate-45 border-l border-t border-white/20">
+                            </div>
+                            <div class="text-center mb-6">
+                                <h3 class="text-2xl font-bold text-[#004689] mb-1">Bienvenido</h3>
+                                <p class="text-xs text-gray-500 font-medium uppercase tracking-wide">Inicia sesión en tu
+                                    cuenta</p>
+                            </div>
+                            <form class="space-y-4" onsubmit="event.preventDefault();">
+                                <div class="space-y-1">
+                                    <label
+                                        class="block text-xs font-bold text-gray-600 ml-1 uppercase tracking-wider">Email</label>
+                                    <div class="relative">
+                                        <input type="email"
+                                            class="w-full pl-10 pr-4 py-2.5 rounded-xl border border-gray-200 bg-gray-50 focus:bg-white focus:ring-2 focus:ring-[#004689]/20 focus:border-[#004689] outline-none transition-all text-sm font-medium"
+                                            placeholder="nombre@email.com">
+                                        <svg class="w-5 h-5 text-gray-400 absolute left-3 top-2.5" fill="none"
+                                            stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                d="M16 12a4 4 0 10-8 0 4 4 0 008 0zm0 0v1.5a2.5 2.5 0 005 0V12a9 9 0 10-9 9m4.5-1.206a8.959 8.959 0 01-4.5 1.207">
+                                            </path>
+                                        </svg>
+                                    </div>
+                                </div>
+                                <div class="space-y-1">
+                                    <label
+                                        class="block text-xs font-bold text-gray-600 ml-1 uppercase tracking-wider">Contraseña</label>
+                                    <div class="relative">
+                                        <input type="password"
+                                            class="w-full pl-10 pr-4 py-2.5 rounded-xl border border-gray-200 bg-gray-50 focus:bg-white focus:ring-2 focus:ring-[#004689]/20 focus:border-[#004689] outline-none transition-all text-sm font-medium"
+                                            placeholder="••••••••">
+                                        <svg class="w-5 h-5 text-gray-400 absolute left-3 top-2.5" fill="none"
+                                            stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z">
+                                            </path>
+                                        </svg>
+                                    </div>
+                                </div>
+                                <div class="flex items-center justify-between text-xs my-2">
+                                    <label class="flex items-center gap-2 cursor-pointer group">
+                                        <input type="checkbox"
+                                            class="rounded border-gray-300 text-[#004689] focus:ring-[#004689]">
+                                        <span
+                                            class="text-gray-500 group-hover:text-[#004689] transition">Recuérdame</span>
+                                    </label>
+                                    <a href="#" class="text-[#004689] font-semibold hover:underline">¿Olvidaste tu
+                                        contraseña?</a>
+                                </div>
+                                <button type="submit"
+                                    class="w-full bg-gradient-to-r from-[#004689] to-[#002F5C] text-white py-3 rounded-xl font-bold text-sm tracking-wide hover:shadow-lg hover:shadow-[#004689]/30 hover:-translate-y-0.5 transition-all duration-300 active:scale-95">
+                                    INICIAR SESIÓN
+                                </button>
+                            </form>
+                            <div class="mt-6 border-t border-gray-100 pt-4 text-center">
+                                <p class="text-xs text-gray-500 mb-3">¿No tienes una cuenta?</p>
+                                <a href="registro.html"
+                                    class="block w-full py-2.5 rounded-xl border-2 border-[#004689]/10 text-[#004689] font-bold text-sm hover:bg-[#004689]/5 hover:border-[#004689] transition-all duration-300">
+                                    Crear cuenta nueva
+                                </a>
+                            </div>
+                        </div>
+                    </div>
                     <a href="carrito.html" class="relative hover:text-gray-200 transition">
                         <svg class="w-10 h-10">
                             <use xlink:href="./assets/sprite.svg#icon-cart" />
@@ -88,40 +159,178 @@
     <div class="w-full h-[130px] bg-[#001a33]"></div>
 
 
-    <main class="product-container">
-        <div class="product-image">
-            <img src="https://via.placeholder.com/400x500/ddd/333?text=OnePlus+15" alt="OnePlus 15">
-        </div>
+    <main class="min-h-screen py-10 px-4 font-sans">
 
-        <div class="product-details">
-            <h1>OnePlus 15</h1>
-            <div class="price-tag">1029,00€</div>
-
-            <span class="label">Color</span>
-            <div class="color-options">
-                <div class="color-circle selected" title="Infinite Black">Negro</div>
-                <div class="color-circle" title="Sand Storm">Arena</div>
-            </div>
-
-            <span class="label">Almacenamiento</span>
-            <div class="storage-options">
-                <div class="chip">256 GB</div>
-                <div class="chip selected">512 GB</div>
-            </div>
-
-            <div class="gift-box">
-                <img src="https://via.placeholder.com/50?text=Gift" alt="Regalo">
-                <div class="gift-info">
-                    <h4>Incluye DJI Mobile 7</h4>
-                    <span>¡GRATIS! (Valorado en 99€)</span>
+        <div class="max-w-[95%] mx-auto grid grid-cols-1 lg:grid-cols-3 gap-12 items-stretch">
+            <div
+                class="lg:col-span-2 bg-white rounded-3xl p-8 shadow-md flex items-center justify-between relative h-full min-h-[500px]">
+                <button class="text-gray-300 hover:text-gray-800 text-4xl transition duration-200 px-2 z-10">
+                    &#10094;
+                </button>
+                <div class="w-full flex justify-center absolute inset-0 items-center pointer-events-none">
+                    <img src="./assets/ImagenOnePlus1.jpg" alt="One Plus 15"
+                        class="max-h-[400px] object-contain pointer-events-auto">
                 </div>
+                <button class="text-gray-300 hover:text-gray-800 text-4xl transition duration-200 px-2 z-10">
+                    &#10095;
+                </button>
             </div>
 
-            <button class="btn-add" onclick="window.location.href='carrito.html'">
-                Añadir al carrito
-            </button>
+            <div class="bg-white rounded-3xl p-8 shadow-md flex flex-col h-full justify-between">
+                <div class="flex flex-col gap-6">
+                    <h1 class="text-4xl font-semibold text-gray-900">One Plus 15</h1>
+
+                    <div>
+                        <h3 class="text-gray-500 font-medium mb-3">Color</h3>
+                        <div class="flex gap-3 flex-wrap">
+                            <div
+                                class="border border-gray-200 rounded-lg px-4 py-3 flex items-center gap-2 cursor-pointer hover:border-gray-400 transition">
+                                <span class="w-4 h-4 rounded-full bg-gray-900"></span>
+                                <span class="text-sm font-medium">Infinite Black</span>
+                            </div>
+                            <div
+                                class="border border-black ring-1 ring-black rounded-lg px-4 py-3 flex items-center gap-2 cursor-pointer">
+                                <span class="w-4 h-4 rounded-full bg-[#dcbfa8]"></span>
+                                <span class="text-sm font-medium">Sand Storm</span>
+                            </div>
+                            <div
+                                class="border border-gray-200 rounded-lg px-4 py-3 flex items-center gap-2 cursor-pointer hover:border-gray-400 transition">
+                                <span class="w-4 h-4 rounded-full bg-[#e0d6ff]"></span>
+                                <span class="text-sm font-medium">Ultra Violet</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div>
+                        <h3 class="text-gray-500 font-medium mb-3">Almacenamiento</h3>
+                        <div class="flex flex-col gap-3">
+                            <div
+                                class="border border-gray-100 bg-gray-50 rounded-lg p-4 flex justify-between items-center text-sm text-gray-400 cursor-not-allowed">
+                                <span>12 GB RAM + 256 GB ROM</span>
+                                <span>No disponible</span>
+                            </div>
+                            <div
+                                class="border border-black ring-1 ring-black rounded-lg p-4 flex justify-between items-center text-sm font-medium cursor-pointer">
+                                <span>16 GB RAM + 512 GB ROM</span>
+                                <span>1.029,00 €</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div>
+                        <p class="text-gray-700 font-medium mb-2">Llévatelo de regalo</p>
+                        <div class="border border-gray-200 rounded-xl p-4 flex gap-4 items-center">
+                            <div class="w-16 h-16 flex-shrink-0 bg-gray-50 rounded-md flex items-center justify-center">
+                                <span class="text-2xl">🎁</span>
+                            </div>
+                            <div class="text-xs">
+                                <p class="text-gray-600 mb-1">DJI Osmo Mobile 7 Gimbal</p>
+                                <div class="flex items-center gap-2">
+                                    <span class="line-through text-gray-400">99,00 €</span>
+                                    <span class="text-red-500 font-bold">Ahorra 99,00 €</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="mt-6">
+                    <hr class="border-gray-100 mb-4">
+                    <div class="text-center space-y-4">
+                        <div class="text-gray-600 text-lg">
+                            Total:
+                            <div class="text-4xl font-bold text-gray-900 mt-1">1029,00€</div>
+                        </div>
+                        <button
+                            class="w-full bg-[#00305e] hover:bg-[#002244] text-white font-semibold text-lg py-4 rounded-full transition shadow-lg transform active:scale-95">
+                            Añadir al carrito
+                        </button>
+                    </div>
+                </div>
+
+            </div>
         </div>
     </main>
+
+    <section class="flex-grow max-w-[95%] mx-auto px-4 md:px-8 py-10 w-full">
+        <div class="mb-12 text-center">
+            <h2 class="text-3xl md:text-4xl font-extralight color-[#000000] mt-3 tracking-tight">
+                Otros Productos
+            </h2>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-10">
+            <a href="producto.html"
+                class="group bg-white rounded-[2.5rem] p-8 shadow-md shadow-black/20 hover:shadow-lg hover:shadow-black/40 hover:-translate-y-2 transition-all duration-500 flex flex-col">
+                <div class="h-64 w-full flex items-center justify-center mb-4 relative">
+                    <img src="assets/Oneplus15.png"
+                        class="h-60 object-contain group-hover:scale-110 transition duration-500" />
+                </div>
+                <div class="mt-auto text-center">
+                    <h3
+                        class="text-2xl font-semibold text-[#000000] mb-2 group-hover:text-[#000000] transition tracking-tight">
+                        OnePlus 15
+                    </h3>
+                    <div class="text-3xl font-normal text-[#000000] tracking-tight">
+                        1.029 €
+                    </div>
+                </div>
+            </a>
+            <a href="producto.html"
+                class="group bg-white rounded-[2.5rem] p-8 shadow-md shadow-black/20 hover:shadow-lg hover:shadow-black/40 hover:-translate-y-2 transition-all duration-500 flex flex-col">
+                <div class="h-64 w-full flex items-center justify-center mb-4 relative">
+                    <img src="assets/iPhone17ProMax.png"
+                        class="h-60 object-contain group-hover:scale-110 transition duration-500" />
+                </div>
+                <div class="mt-auto text-center">
+                    <h3
+                        class="text-2xl font-semibold text-[#000000] mb-2 group-hover:text-[#000000] transition tracking-tight">
+                        Iphone 17 Pro Max
+                    </h3>
+                    <div class="text-3xl font-normal text-[#000000] tracking-tight">
+                        1.700 €
+                    </div>
+                </div>
+            </a>
+            <a href="producto.html"
+                class="group bg-white rounded-[2.5rem] p-8 shadow-md shadow-black/20 hover:shadow-lg hover:shadow-black/40 hover:-translate-y-2 transition-all duration-500 flex flex-col">
+                <div class="h-64 w-full flex items-center justify-center mb-4 relative">
+                    <img src="assets/iphone17AirBlue.png"
+                        class="h-60 object-contain group-hover:scale-110 transition duration-500" />
+                </div>
+                <div class="mt-auto text-center">
+                    <h3
+                        class="text-2xl font-semibold text-[#000000] mb-2 group-hover:text-[#000000] transition tracking-tight">
+                        Iphone 17 Air
+                    </h3>
+                    <div class="text-3xl font-normal text-[#000000] tracking-tight">
+                        1.050 €
+                    </div>
+                </div>
+            </a>
+            <a href="producto.html"
+                class="group bg-white rounded-[2.5rem] p-8 shadow-md shadow-black/20 hover:shadow-lg hover:shadow-black/40 hover:-translate-y-2 transition-all duration-500 flex flex-col">
+                <div class="h-64 w-full flex items-center justify-center mb-4 relative">
+                    <img src="assets/oppoFindX9Pro.png"
+                        class="h-60 object-contain group-hover:scale-110 transition duration-500" />
+                </div>
+                <div class="mt-auto text-center">
+                    <h3
+                        class="text-2xl font-semibold text-[#000000] mb-2 group-hover:text-[#000000] transition tracking-tight">
+                        Oppo Find X9 Pro
+                    </h3>
+                    <div class="text-3xl font-normal text-[#000000] tracking-tight">
+                        1.299 €
+                    </div>
+                </div>
+            </a>
+        </div>
+        <div class="flex justify-center mt-8">
+            <a href="index.html"
+                class="group inline-flex items-center gap-2 bg-[#004689] text-white font-medium px-10 py-3 rounded-full hover:opacity-90 transition text-lg">
+                Ver más
+            </a>
+        </div>
+    </section>
     <!--Footer-->
     <footer class="bg-gradient-to-r from-[#004689] to-[#002F5C] text-white py-16 mt-auto">
         <div class="max-w-[95%] mx-auto px-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8">
@@ -279,6 +488,32 @@
             if (closeMenu) closeMenu.addEventListener("click", toggleMenu);
             if (overlay) overlay.addEventListener("click", toggleMenu);
         });
+
+        // Login Card Toggle Logic
+        const userBtn = document.getElementById("user-menu-btn");
+        const loginCard = document.getElementById("login-card");
+
+        if (userBtn && loginCard) {
+            userBtn.addEventListener("click", (e) => {
+                e.stopPropagation();
+                const isClosed = loginCard.classList.contains("invisible");
+                if (isClosed) {
+                    loginCard.classList.remove("invisible", "opacity-0", "scale-95", "pointer-events-none");
+                } else {
+                    loginCard.classList.add("invisible", "opacity-0", "scale-95", "pointer-events-none");
+                }
+            });
+
+            document.addEventListener("click", (e) => {
+                if (!loginCard.contains(e.target) && !userBtn.contains(e.target)) {
+                    loginCard.classList.add("invisible", "opacity-0", "scale-95", "pointer-events-none");
+                }
+            });
+
+            loginCard.addEventListener("click", (e) => {
+                e.stopPropagation();
+            });
+        }
     </script>
 </body>
 

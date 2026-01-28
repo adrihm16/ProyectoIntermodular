@@ -14,7 +14,7 @@
   </style>
 </head>
 
-<body>
+<body class="bg-gray-50">
   <!--Header-->
   <header id="main-header" class="fixed top-0 left-0 w-full z-50 transition-transform duration-300 shadow-md font-sans">
     <div id="top-bar"
@@ -81,8 +81,8 @@
                 <div class="space-y-1">
                   <label class="block text-xs font-bold text-gray-600 ml-1 uppercase tracking-wider">Contraseña</label>
                   <div class="relative">
-                    <input type="password"
-                      class="w-full pl-10 pr-4 py-2.5 rounded-xl border border-gray-200 bg-gray-50 focus:bg-white focus:ring-2 focus:ring-[#004689]/20 focus:border-[#004689] outline-none transition-all text-sm font-medium"
+                    <input id="login-password" type="password"
+                      class="w-full pl-10 pr-12 py-2.5 rounded-xl border border-gray-200 bg-gray-50 focus:bg-white focus:ring-2 focus:ring-[#004689]/20 focus:border-[#004689] outline-none transition-all text-sm font-medium"
                       placeholder="••••••••">
                     <svg class="w-5 h-5 text-gray-400 absolute left-3 top-2.5" fill="none" stroke="currentColor"
                       viewBox="0 0 24 24">
@@ -90,6 +90,20 @@
                         d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z">
                       </path>
                     </svg>
+                    <button type="button"
+                      class="toggle-password absolute right-3 top-2.5 text-gray-400 hover:text-gray-600 focus:outline-none transition-colors"
+                      data-target="login-password">
+                      <svg class="w-5 h-5 eye-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path class="eye" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                          d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                        <path class="eye" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                          d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+                        <path class="eye-off hidden" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                          d="M13.875 18.825A10.05 10.05 0 0112 19c-4.478 0-8.268-2.943-9.542-7a10.051 10.051 0 014.13-5.253m2.47-1.423A9.947 9.947 0 0112 5c4.478 0 8.268 2.943 9.542 7a10.059 10.059 0 01-3.69 4.836m-1.84 1.84a4 4 0 11-5.656-5.656" />
+                        <path class="eye-off hidden" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                          d="M3 3l18 18" />
+                      </svg>
+                    </button>
                   </div>
                 </div>
 
@@ -487,6 +501,27 @@
         e.stopPropagation();
       });
     }
+
+    // Password visibility toggle
+    document.querySelectorAll('.toggle-password').forEach(button => {
+      button.addEventListener('click', function (e) {
+        e.stopPropagation(); // Avoid triggering card close
+        const targetId = this.getAttribute('data-target');
+        const input = document.getElementById(targetId);
+        const eyePaths = this.querySelectorAll('.eye');
+        const eyeOffPaths = this.querySelectorAll('.eye-off');
+
+        if (input.type === 'password') {
+          input.type = 'text';
+          eyePaths.forEach(p => p.classList.add('hidden'));
+          eyeOffPaths.forEach(p => p.classList.remove('hidden'));
+        } else {
+          input.type = 'password';
+          eyePaths.forEach(p => p.classList.remove('hidden'));
+          eyeOffPaths.forEach(p => p.classList.add('hidden'));
+        }
+      });
+    });
   </script>
 </body>
 

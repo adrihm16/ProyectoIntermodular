@@ -80,8 +80,8 @@
                 <div class="space-y-1">
                   <label class="block text-xs font-bold text-gray-600 ml-1 uppercase tracking-wider">Contraseña</label>
                   <div class="relative">
-                    <input type="password"
-                      class="w-full pl-10 pr-4 py-2.5 rounded-xl border border-gray-200 bg-gray-50 focus:bg-white focus:ring-2 focus:ring-[#004689]/20 focus:border-[#004689] outline-none transition-all text-sm font-medium"
+                    <input id="login-password" type="password"
+                      class="w-full pl-10 pr-12 py-2.5 rounded-xl border border-gray-200 bg-gray-50 focus:bg-white focus:ring-2 focus:ring-[#004689]/20 focus:border-[#004689] outline-none transition-all text-sm font-medium"
                       placeholder="••••••••">
                     <svg class="w-5 h-5 text-gray-400 absolute left-3 top-2.5" fill="none" stroke="currentColor"
                       viewBox="0 0 24 24">
@@ -89,6 +89,20 @@
                         d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z">
                       </path>
                     </svg>
+                    <button type="button"
+                      class="toggle-password absolute right-3 top-2.5 text-gray-400 hover:text-gray-600 focus:outline-none transition-colors"
+                      data-target="login-password">
+                      <svg class="w-5 h-5 eye-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path class="eye" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                          d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                        <path class="eye" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                          d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+                        <path class="eye-off hidden" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                          d="M13.875 18.825A10.05 10.05 0 0112 19c-4.478 0-8.268-2.943-9.542-7a10.051 10.051 0 014.13-5.253m2.47-1.423A9.947 9.947 0 0112 5c4.478 0 8.268 2.943 9.542 7a10.059 10.059 0 01-3.69 4.836m-1.84 1.84a4 4 0 11-5.656-5.656" />
+                        <path class="eye-off hidden" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                          d="M3 3l18 18" />
+                      </svg>
+                    </button>
                   </div>
                 </div>
                 <div class="flex items-center justify-between text-xs my-2">
@@ -162,8 +176,8 @@
     <!--Carrito-->
     <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
       <div class="lg:col-span-9 bg-white rounded-[2.5rem] p-6 md:p-10 shadow-md border border-gray-100 min-h-[500px]">
-        <div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-6">
-          <div class="flex flex-col items-center">
+        <div id="cart-items-container" class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-6">
+          <div class="product-item flex flex-col items-center">
             <div
               class="bg-white border border-gray-200 rounded-[1.5rem] p-4 shadow-sm w-full aspect-square flex flex-col items-center justify-center relative group hover:shadow-md transition-shadow">
               <img src="assets/Oneplus15.png" alt="OnePlus 15" class="h-32 object-contain mb-3" />
@@ -174,13 +188,14 @@
             </div>
 
             <div class="flex items-center gap-3 mt-4">
-              <button class="text-gray-400 hover:text-[#003366] transition">
+              <button class="quantity-btn decrease text-gray-400 hover:text-[#003366] transition" data-price="1029.00">
                 <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <circle cx="12" cy="12" r="10" stroke-width="1.5"></circle>
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M8 12h8"></path>
                 </svg>
               </button>
-              <button class="text-gray-400 hover:text-[#003366] transition">
+              <span class="quantity text-lg font-bold w-6 text-center">1</span>
+              <button class="quantity-btn increase text-gray-400 hover:text-[#003366] transition" data-price="1029.00">
                 <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <circle cx="12" cy="12" r="10" stroke-width="1.5"></circle>
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 8v8m-4-4h8"></path>
@@ -189,7 +204,7 @@
             </div>
           </div>
 
-          <div class="flex flex-col items-center">
+          <div class="product-item flex flex-col items-center">
             <div
               class="bg-white border border-gray-200 rounded-[1.5rem] p-4 shadow-sm w-full aspect-square flex flex-col items-center justify-center relative group hover:shadow-md transition-shadow">
               <img src="https://via.placeholder.com/150?text=Gimbal" alt="DJI" class="h-32 object-contain mb-3" />
@@ -199,13 +214,14 @@
               <p class="text-base font-bold text-gray-500 mt-1">0,00€</p>
             </div>
             <div class="flex items-center gap-3 mt-4">
-              <button class="text-gray-400 hover:text-[#003366] transition">
+              <button class="quantity-btn decrease text-gray-400 hover:text-[#003366] transition" data-price="0.00">
                 <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <circle cx="12" cy="12" r="10" stroke-width="1.5"></circle>
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M8 12h8"></path>
                 </svg>
               </button>
-              <button class="text-gray-400 hover:text-[#003366] transition">
+              <span class="quantity text-lg font-bold w-6 text-center">1</span>
+              <button class="quantity-btn increase text-gray-400 hover:text-[#003366] transition" data-price="0.00">
                 <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <circle cx="12" cy="12" r="10" stroke-width="1.5"></circle>
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 8v8m-4-4h8"></path>
@@ -214,7 +230,7 @@
             </div>
           </div>
 
-          <div class="flex flex-col items-center">
+          <div class="product-item flex flex-col items-center">
             <div
               class="bg-white border border-gray-200 rounded-[1.5rem] p-4 shadow-sm w-full aspect-square flex flex-col items-center justify-center relative group hover:shadow-md transition-shadow">
               <img src="https://via.placeholder.com/150?text=Funda" alt="Funda" class="h-32 object-contain mb-3" />
@@ -224,13 +240,14 @@
               <p class="text-base font-bold text-gray-500 mt-1">29,90€</p>
             </div>
             <div class="flex items-center gap-3 mt-4">
-              <button class="text-gray-400 hover:text-[#003366] transition">
+              <button class="quantity-btn decrease text-gray-400 hover:text-[#003366] transition" data-price="29.90">
                 <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <circle cx="12" cy="12" r="10" stroke-width="1.5"></circle>
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M8 12h8"></path>
                 </svg>
               </button>
-              <button class="text-gray-400 hover:text-[#003366] transition">
+              <span class="quantity text-lg font-bold w-6 text-center">1</span>
+              <button class="quantity-btn increase text-gray-400 hover:text-[#003366] transition" data-price="29.90">
                 <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <circle cx="12" cy="12" r="10" stroke-width="1.5"></circle>
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 8v8m-4-4h8"></path>
@@ -251,11 +268,11 @@
         <div class="space-y-4 mb-8 flex-grow">
           <div class="flex justify-between text-sm font-medium text-slate-700">
             <span>Subtotal</span>
-            <span>1058,90€</span>
+            <span id="subtotal">1058,90€</span>
           </div>
           <div class="flex justify-between text-sm font-medium text-slate-700">
             <span>Envío</span>
-            <span>0,00€</span>
+            <span id="shipping">0,00€</span>
           </div>
           <div class="border-t border-gray-100 my-4"></div>
         </div>
@@ -263,7 +280,7 @@
         <div class="mb-8">
           <div class="flex justify-between items-center">
             <span class="text-lg font-bold text-slate-900">Total</span>
-            <span class="text-xl font-bold text-slate-900">1058,90€</span>
+            <span id="total-price" class="text-xl font-bold text-slate-900">1058,90€</span>
           </div>
         </div>
 
@@ -538,6 +555,91 @@
         e.stopPropagation();
       });
     }
+
+    // Funcionalidad del carrito
+    document.addEventListener('DOMContentLoaded', () => {
+      const quantityButtons = document.querySelectorAll('.quantity-btn');
+      const subtotalElement = document.getElementById('subtotal');
+      const totalElement = document.getElementById('total-price');
+
+      function updateTotals() {
+        let newSubtotal = 0;
+        document.querySelectorAll('.quantity').forEach(qSpan => {
+          const qty = parseInt(qSpan.textContent);
+          const price = parseFloat(qSpan.parentElement.querySelector('.quantity-btn').getAttribute('data-price'));
+          newSubtotal += qty * price;
+        });
+
+        const formattedSubtotal = newSubtotal.toLocaleString('es-ES', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + '€';
+        subtotalElement.textContent = formattedSubtotal;
+        totalElement.textContent = formattedSubtotal;
+      }
+
+      quantityButtons.forEach(btn => {
+        btn.addEventListener('click', () => {
+          const isIncrease = btn.classList.contains('increase');
+          const quantitySpan = btn.parentElement.querySelector('.quantity');
+          const productItem = btn.closest('.product-item');
+          let currentQty = parseInt(quantitySpan.textContent);
+
+          if (isIncrease) {
+            currentQty++;
+          } else if (currentQty > 0) {
+            currentQty--;
+          }
+
+          if (currentQty === 0 && productItem) {
+            // Animación de salida opcional
+            productItem.style.opacity = '0';
+            productItem.style.transform = 'scale(0.9)';
+            productItem.style.transition = 'all 0.3s ease';
+
+            setTimeout(() => {
+              productItem.remove();
+              updateTotals();
+
+              // Si no quedan productos, mostrar mensaje de carrito vacío
+              const remainingItems = document.querySelectorAll('.product-item');
+              if (remainingItems.length === 0) {
+                document.getElementById('cart-items-container').innerHTML = `
+                  <div class="col-span-full flex flex-col items-center justify-center py-12 text-gray-400">
+                    <svg class="w-20 h-20 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"></path>
+                    </svg>
+                    <p class="text-xl font-medium">Tu carrito está vacío</p>
+                    <a href="index.html" class="mt-4 text-[#004689] hover:underline font-semibold">Volver a la tienda</a>
+                  </div>
+                `;
+              }
+            }, 300);
+          } else {
+            quantitySpan.textContent = currentQty;
+            updateTotals();
+          }
+        });
+      });
+    });
+
+    // Password visibility toggle
+    document.querySelectorAll('.toggle-password').forEach(button => {
+      button.addEventListener('click', function (e) {
+        e.stopPropagation(); // Avoid triggering card close
+        const targetId = this.getAttribute('data-target');
+        const input = document.getElementById(targetId);
+        const eyePaths = this.querySelectorAll('.eye');
+        const eyeOffPaths = this.querySelectorAll('.eye-off');
+
+        if (input.type === 'password') {
+          input.type = 'text';
+          eyePaths.forEach(p => p.classList.add('hidden'));
+          eyeOffPaths.forEach(p => p.classList.remove('hidden'));
+        } else {
+          input.type = 'password';
+          eyePaths.forEach(p => p.classList.remove('hidden'));
+          eyeOffPaths.forEach(p => p.classList.add('hidden'));
+        }
+      });
+    });
   </script>
 </body>
 
